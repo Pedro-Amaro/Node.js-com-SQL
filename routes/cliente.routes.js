@@ -1,11 +1,13 @@
 const { Router } = require('express');
 const routes = Router();
-const { cadastrar } = require('../controllers/clientes')
+const { cadastrar, deletarCliente, editCliente, listarCliente, listarClienteById } = require('../controllers/clientes')
 
-routes.post('/clientes', cadastrar)
-//routes.post('/clientes')
-//routes.post('/clientes')
-//routes.post('/clientes')
-//routes.post('/clientes')  
+
+routes.get('/cliente', listarCliente)
+routes.get('/cliente/:id', listarClienteById)
+routes.post('/cliente', cadastrar)
+routes.delete('/cliente/:id', deletarCliente)
+routes.put('/cliente/:id', editCliente)
+
 
 module.exports = routes;

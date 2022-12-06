@@ -1,22 +1,28 @@
+const cors = require('cors')
 const express = require('express');
 const path = require('path')
 const app = express();
-const port = 3000;
+const port =  4000;
 const rotas = require('./routes/index.routes')
 
+
+
 //Rotas
-const user = require('./routes/user');
+const cliente = require('./routes/cliente.routes');
 const auth = require('./routes/auth');
 const product = require('./routes/product');
 const category = require('./routes/category');
 
-app.use('/user', user)
+app.use(express.json())
+app.use(cors())
+app.use('/clientes-api', cliente)
 app.use('/auth', auth)
 app.use('/product', product)
 app.use('/category', category)
 
-app.use(express.json())
+
 rotas(app)
+
 
 app.listen(port, function(){
     console.log("Rodando!!!")
